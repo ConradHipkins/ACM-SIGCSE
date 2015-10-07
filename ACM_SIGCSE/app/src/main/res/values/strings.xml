@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">ACM_SIGCSE</string>
-
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
 </resources>
