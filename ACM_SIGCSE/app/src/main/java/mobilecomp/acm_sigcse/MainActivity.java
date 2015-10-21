@@ -6,6 +6,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
+    private int numParticipants = 0;
+
+    private int remaining;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,4 +37,13 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public int addParticpant()
+    {
+        numParticipants++;
+        remaining = capacity - numParticipants;
+        return numParticipants;
+    }
+
+
 }
