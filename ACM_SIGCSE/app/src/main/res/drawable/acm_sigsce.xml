@@ -4,6 +4,6 @@
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/acm.png" />
+        android:src="@drawable/acm" />
 
 </selector>
