@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 /**
  * Author: Luis Diniz
- * Version 2: 10/22/2015
+ * Version 2: 10/26/2015
  * Description: Simple class able to calculate how many spots are letf in certain seminar and show it together with maximum capacity of it
  */
 
@@ -25,6 +25,7 @@ public class headcount extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.head_counter);
         init();
+        //The capacity will be available on the database
         capacity = this.setCapacity(100);
         maximum.setText("Maximum "+String.valueOf(capacity));
     }
