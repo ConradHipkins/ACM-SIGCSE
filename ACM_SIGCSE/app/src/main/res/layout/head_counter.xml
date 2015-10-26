@@ -21,21 +21,30 @@
             android:ems="10"
             android:id="@+id/numParticipant"
             android:layout_gravity="center"
-            android:text="Number of Participants"
             android:theme="@style/Animation.AppCompat.DropDownUp"
             android:textSize="@dimen/abc_text_size_large_material"
-            android:textStyle="italic" />
+            android:textStyle="italic"
+            android:textAlignment="center" />
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="left|bottom"></FrameLayout>
+            android:layout_gravity="left|bottom"
+            android:id="@+id/numbParticipant"></FrameLayout>
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.10"></FrameLayout>
+        android:layout_weight="0.10">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ok"
+            android:id="@+id/ok"
+            android:layout_gravity="center_horizontal|top" />
+    </FrameLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -60,7 +69,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Remaining"
         android:id="@+id/rem"
         android:textSize="@dimen/abc_action_bar_progress_bar_size"
         android:theme="@style/AlertDialog.AppCompat" />
@@ -75,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SUBMIT"
-        android:id="@+id/button2"
+        android:id="@+id/submit"
         android:layout_gravity="center_horizontal"
         android:background="#4c41ff"
         android:textColor="#ffffff" />

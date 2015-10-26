@@ -1,14 +1,14 @@
 package mobilecomp.acm_sigcse;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
 
 public class MainActivity extends AppCompatActivity {
-    private int numParticipants = 0;
-
-    private int remaining;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void onClick(View view){
 
+        Intent i = new Intent();
+        i.setClass(this, headcount.class);
+        startActivity(i);
+
+    }
 
 }
