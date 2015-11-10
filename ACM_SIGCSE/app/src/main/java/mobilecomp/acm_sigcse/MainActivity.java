@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View view){
 
         Intent i = new Intent();
-        i.setClass(this, headcount.class);
+        i.setClass(this, SeminarActivity.class);
         startActivity(i);
 
     }
