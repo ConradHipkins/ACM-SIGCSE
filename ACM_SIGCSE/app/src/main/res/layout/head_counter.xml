@@ -43,13 +43,14 @@
             android:layout_height="wrap_content"
             android:text="Ok"
             android:id="@+id/ok"
-            android:layout_gravity="center_horizontal|top" />
+            android:layout_gravity="center_horizontal|top"
+            android:background="@mipmap/button"
+            android:textColor="#ffffff" />
     </FrameLayout>
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Maximum "
         android:id="@+id/maximum"
         android:theme="@style/AlertDialog.AppCompat"
         android:textSize="@dimen/abc_action_bar_progress_bar_size" />
@@ -85,7 +86,8 @@
         android:text="SUBMIT"
         android:id="@+id/submit"
         android:layout_gravity="center_horizontal"
-        android:background="#4c41ff"
-        android:textColor="#ffffff" />
+        android:background="@mipmap/button"
+        android:textColor="#ffffff"
+        android:onClick="basicToast"/>
 
 </LinearLayout>
