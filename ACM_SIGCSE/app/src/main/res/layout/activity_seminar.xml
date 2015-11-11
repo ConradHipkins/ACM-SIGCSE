@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/viewAllSeminarsTitle"
-        android:text="@string/viewAllSeminarsTitle"
+        android:text="@string/view_all_seminars_title"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

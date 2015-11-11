@@ -1,93 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/activity_horizontal_margin"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.17"></FrameLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.14" >
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/numParticipant"
-            android:layout_gravity="center"
-            android:theme="@style/Animation.AppCompat.DropDownUp"
-            android:textSize="@dimen/abc_text_size_large_material"
-            android:textStyle="italic"
-            android:textAlignment="center" />
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="left|bottom"
-            android:id="@+id/numbParticipant"></FrameLayout>
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.10">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ok"
-            android:id="@+id/ok"
-            android:layout_gravity="center_horizontal|top"
-            android:background="@mipmap/button"
-            android:textColor="#ffffff" />
-    </FrameLayout>
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/maximum"
-        android:theme="@style/AlertDialog.AppCompat"
-        android:textSize="@dimen/abc_action_bar_progress_bar_size" />
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.07">
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="28dp"
-            android:layout_gravity="left|bottom"></FrameLayout>
-    </FrameLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/rem"
-        android:textSize="@dimen/abc_action_bar_progress_bar_size"
-        android:theme="@style/AlertDialog.AppCompat" />
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.22"></FrameLayout>
-
-    <Button
+    <EditText
+        android:id="@+id/numParticipant"
+        android:inputType="number"
+        android:ems="10"
+        android:textSize="@dimen/abc_text_size_large_material"
+        android:textStyle="italic"
+        android:textAlignment="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SUBMIT"
+        android:layout_gravity="center"
+        android:theme="@style/Animation.AppCompat.DropDownUp" />
+
+    <Button
+        android:id="@+id/ok"
+        android:text="Ok"
+        android:textColor="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:background="@mipmap/button" />
+
+    <TextView
+        android:id="@+id/maximum"
+        android:textSize="@dimen/abc_action_bar_progress_bar_size"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AlertDialog.AppCompat" />
+
+    <TextView
+        android:id="@+id/rem"
+        android:textSize="@dimen/abc_action_bar_progress_bar_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AlertDialog.AppCompat" />
+
+    <Button
         android:id="@+id/submit"
+        android:text="SUBMIT"
+        android:textColor="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:background="@mipmap/button"
-        android:textColor="#ffffff"
         android:onClick="basicToast"/>
 
 </LinearLayout>

@@ -26,21 +26,30 @@ public class SeminarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seminar);
+
         new GetAllSeminarsTask().execute();
 
         Seminar sem1 = new Seminar();
-        sem1.setSeminarName("Cool name1");
-        sem1.setSeminarNumber("02020202");
+        sem1.setSeminarName("Seminar 1 Title");
+        sem1.setSeminarNumber("00001");
         Seminar sem2 = new Seminar();
         sem2.setSeminarName("Cool name2");
-        sem2.setSeminarNumber("23423999999");
+        sem2.setSeminarNumber("00002");
         Seminar sem3 = new Seminar();
         sem3.setSeminarName("Cool name3");
-        sem3.setSeminarNumber("234");
+        sem3.setSeminarNumber("00015");
+        Seminar sem4 = new Seminar();
+        sem4.setSeminarName("Another seminar");
+        sem4.setSeminarNumber("00120");
+        Seminar sem5 = new Seminar();
+        sem5.setSeminarName("Holy cow, another seminar");
+        sem5.setSeminarNumber("01000");
 
         testSeminarList.add(sem1);
         testSeminarList.add(sem2);
         testSeminarList.add(sem3);
+        testSeminarList.add(sem4);
+        testSeminarList.add(sem5);
 
         ListView listView = (ListView) findViewById(R.id.viewAllSeminars);
         listView.setAdapter(new SeminarListAdapter(this, testSeminarList));
@@ -87,9 +96,8 @@ public class SeminarActivity extends AppCompatActivity {
                 Seminar[] seminar = restTemplate.getForObject(url, Seminar[].class);
                 return new ArrayList<Seminar>(Arrays.asList(seminar));
             } catch (Exception e) {
-                Log.e("MainActivity", e.getMessage(), e);
+                Log.e("SeminarActivity", e.getMessage(), e);
             }
-
             return null;
         }
 
