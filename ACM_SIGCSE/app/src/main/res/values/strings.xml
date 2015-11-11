@@ -5,5 +5,6 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="server_address">146.113.79.126</string>
+    <string name="viewAllSeminarsTitle">Seminars</string>
 
 </resources>
