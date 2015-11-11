@@ -8,5 +8,6 @@
     <string name="view_all_seminars_title">Seminars</string>
     <string name="login_username_hint">Username</string>
     <string name="login_password_hint">Password</string>
+    <string name="headcount_hint">Head count</string>
 
 </resources>
