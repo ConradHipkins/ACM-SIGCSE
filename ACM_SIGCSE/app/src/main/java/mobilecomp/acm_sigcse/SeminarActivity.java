@@ -1,12 +1,17 @@
 package mobilecomp.acm_sigcse;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
@@ -16,12 +21,39 @@ import java.util.Arrays;
 
 public class SeminarActivity extends AppCompatActivity {
     private ArrayList<Seminar> seminarList = new ArrayList<Seminar>();
+    private ArrayList<Seminar> testSeminarList = new ArrayList<Seminar>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seminar);
-        new HttpRequestTask().execute();
+        new GetAllSeminarsTask().execute();
+
+        Seminar sem1 = new Seminar();
+        sem1.setSeminarName("Cool name1");
+        sem1.setSeminarNumber("02020202");
+        Seminar sem2 = new Seminar();
+        sem2.setSeminarName("Cool name2");
+        sem2.setSeminarNumber("23423999999");
+        Seminar sem3 = new Seminar();
+        sem3.setSeminarName("Cool name3");
+        sem3.setSeminarNumber("234");
+
+        testSeminarList.add(sem1);
+        testSeminarList.add(sem2);
+        testSeminarList.add(sem3);
+
+        ListView listView = (ListView) findViewById(R.id.viewAllSeminars);
+        listView.setAdapter(new SeminarListAdapter(this, testSeminarList));
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(SeminarActivity.this, headcount.class);
+                intent.putExtra("SEMINAR_NAME", testSeminarList.get(position).getSeminarName());
+                intent.putExtra("SEMINAR_NUMBER", testSeminarList.get(position).getSeminarNumber());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -45,11 +77,12 @@ public class SeminarActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    private class HttpRequestTask extends AsyncTask<Void, Void, ArrayList<Seminar>> {
+
+    private class GetAllSeminarsTask extends AsyncTask<Void, Void, ArrayList<Seminar>> {
         @Override
         protected ArrayList<Seminar> doInBackground(Void... params) {
             try {
-                final String url = "http://146.113.79.126/api/seminars";
+                final String url = String.format("http://%s:3002/api/seminars", getString(R.string.server_address));//Added port number
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
                 Seminar[] seminar = restTemplate.getForObject(url, Seminar[].class);
@@ -63,8 +96,7 @@ public class SeminarActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(ArrayList<Seminar> seminars) {
-            TextView tv = (TextView) findViewById(R.id.testtest);
-            tv.setText("It worked!");
+            Toast.makeText(getApplicationContext(), "Call executed",Toast.LENGTH_SHORT).show();
         }
 
     }
