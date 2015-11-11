@@ -82,7 +82,7 @@ public class SeminarActivity extends AppCompatActivity {
         @Override
         protected ArrayList<Seminar> doInBackground(Void... params) {
             try {
-                final String url = String.format("http://%s:3002/api/seminars", getString(R.string.server_address));//Added port number
+                final String url = String.format("http://%s/api/seminars", getString(R.string.server_address));//Added port number
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
                 Seminar[] seminar = restTemplate.getForObject(url, Seminar[].class);
