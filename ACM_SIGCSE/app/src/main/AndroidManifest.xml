@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".headcount"
+            android:name=".HeadCountActivity"
             android:label="@string/app_name" />
         <activity
             android:name=".SeminarActivity"

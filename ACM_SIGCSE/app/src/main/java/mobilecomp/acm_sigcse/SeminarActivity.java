@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -48,7 +47,7 @@ public class SeminarActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(SeminarActivity.this, headcount.class);
+                Intent intent = new Intent(SeminarActivity.this, HeadCountActivity.class);
                 intent.putExtra("SEMINAR_NAME", testSeminarList.get(position).getSeminarName());
                 intent.putExtra("SEMINAR_NUMBER", testSeminarList.get(position).getSeminarNumber());
                 startActivity(intent);
