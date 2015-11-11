@@ -18,7 +18,7 @@ import android.widget.Toast;
 public class HeadCountActivity extends Activity implements View.OnClickListener {
     private Button ok, submit;
     private int capacity, remaining, nParticipant;
-    private EditText numParticant;
+    private EditText numParticipant;
     private TextView rem, maximum;
     String X;
 
@@ -40,7 +40,7 @@ public class HeadCountActivity extends Activity implements View.OnClickListener 
         ok = (Button) findViewById(R.id.ok);
 
         //Text Fields (Edit)
-        numParticant = (EditText) findViewById(R.id.numParticipant);
+        numParticipant = (EditText) findViewById(R.id.numParticipant);
 
         //Text views
         rem = (TextView) findViewById(R.id.rem);
@@ -59,7 +59,7 @@ public class HeadCountActivity extends Activity implements View.OnClickListener 
     //Calculate how many spots are left in a seminar
     public int spotsLeft(String S)
     {
-        S = numParticant.getText().toString();
+        S = numParticipant.getText().toString();
         nParticipant = Integer.parseInt(S);
         remaining = capacity - nParticipant;
         return  remaining;
@@ -68,7 +68,7 @@ public class HeadCountActivity extends Activity implements View.OnClickListener 
     @Override
     public void onClick(View view)
     {
-        X = numParticant.getText().toString();
+        X = numParticipant.getText().toString();
         remaining = this.spotsLeft(X);
 
         switch (view.getId()) {
