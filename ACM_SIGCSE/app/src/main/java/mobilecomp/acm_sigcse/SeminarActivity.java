@@ -1,4 +1,8 @@
 package mobilecomp.acm_sigcse;
+/*
+Created by Liz and Natalie on 11/13/15. This class displays the list of the seminars in a list.
+ It works with the XML file to display the list in a linear layout format.
+ */
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -26,7 +30,7 @@ public class SeminarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seminar);
-
+    //Gets the list of all the seminars
         new GetAllSeminarsTask().execute();
 
         Seminar sem1 = new Seminar();
@@ -45,12 +49,14 @@ public class SeminarActivity extends AppCompatActivity {
         sem5.setSeminarName("Holy cow, another seminar");
         sem5.setSeminarNumber("01000");
 
+        //Adds the seminars to a list
         testSeminarList.add(sem1);
         testSeminarList.add(sem2);
         testSeminarList.add(sem3);
         testSeminarList.add(sem4);
         testSeminarList.add(sem5);
 
+        //Displays the seminars
         ListView listView = (ListView) findViewById(R.id.viewAllSeminars);
         listView.setAdapter(new SeminarListAdapter(this, testSeminarList));
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -85,6 +91,9 @@ public class SeminarActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    /*
+        Gets the seminar arraylist and handles the connection to the database
+     */
 
     private class GetAllSeminarsTask extends AsyncTask<Void, Void, ArrayList<Seminar>> {
         @Override
@@ -100,7 +109,7 @@ public class SeminarActivity extends AppCompatActivity {
             }
             return null;
         }
-
+    //Displays a taost when the onPostExecute function gets executed
         @Override
         protected void onPostExecute(ArrayList<Seminar> seminars) {
             Toast.makeText(getApplicationContext(), "Call executed",Toast.LENGTH_SHORT).show();
