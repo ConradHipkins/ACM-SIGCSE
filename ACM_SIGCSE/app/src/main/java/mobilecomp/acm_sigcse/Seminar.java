@@ -7,8 +7,8 @@ package mobilecomp.acm_sigcse;
 public class Seminar {
     private int id;
     private int headCount;
-    private String seminarNumber;
-    private String seminarName;
+    private String semNum;
+    private String semName;
 
 
     //Returns the ID of a seminar
@@ -22,14 +22,14 @@ public class Seminar {
         return headCount;
     }
     //Returns the seminar number
-    public String getSeminarNumber()
+    public String getSemNum()
     {
-        return seminarNumber;
+        return semNum;
     }
     //Returns the seminar name
-    public String getSeminarName()
+    public String getSemName()
     {
-        return seminarName;
+        return semName;
     }
     //Sets the ID to an int
     public void setId(int i)
@@ -44,15 +44,15 @@ public class Seminar {
         headCount = i;
     }
     //Sets the seminar name to a string
-    public void setSeminarNumber(String s)
+    public void setSemNum(String s)
 
     {
-        seminarNumber = s;
+        semNum = s;
     }
     //Sets the seminar name to a string
-    public void setSeminarName(String s)
+    public void setSemName(String s)
 
     {
-        seminarName = s;
+        semName = s;
     }
 }

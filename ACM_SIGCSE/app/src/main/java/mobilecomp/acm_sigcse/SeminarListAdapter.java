@@ -29,9 +29,9 @@ public class SeminarListAdapter extends ArrayAdapter<Seminar> {
         }
 
         TextView tvName = (TextView) convertView.findViewById(R.id.seminarName);
-        tvName.setText(seminar.getSeminarName());
+        tvName.setText(seminar.getSemName());
         TextView tvNumber = (TextView) convertView.findViewById(R.id.seminarNumber);
-        tvNumber.setText(seminar.getSeminarNumber());
+        tvNumber.setText(seminar.getSemNum());
 
         return convertView;
     }

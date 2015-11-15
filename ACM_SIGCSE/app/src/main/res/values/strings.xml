@@ -4,7 +4,7 @@
     <string name="title_activity_seminar">SeminarActivity</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="server_address">146.113.79.126</string>
+    <string name="server_address">146.113.66.242:3002</string>
     <string name="view_all_seminars_title">Seminars</string>
     <string name="login_username_hint">Username</string>
     <string name="login_password_hint">Password</string>
