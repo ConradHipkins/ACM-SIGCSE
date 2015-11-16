@@ -22,6 +22,7 @@ import org.springframework.web.client.RestTemplate;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class SeminarActivity extends AppCompatActivity {
     private ArrayList<Seminar> seminarList = new ArrayList<Seminar>();
@@ -30,6 +31,19 @@ public class SeminarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seminar);
+
+        ListView listView = (ListView) findViewById(R.id.viewAllSeminars);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(SeminarActivity.this, HeadCountActivity.class);
+                intent.putExtra("SEMINAR_ID", seminarList.get(position).getId());
+                intent.putExtra("SEMINAR_HEADCOUNT", seminarList.get(position).getHeadCount());
+                intent.putExtra("SEMINAR_NAME", seminarList.get(position).getSemName());
+                intent.putExtra("SEMINAR_NUMBER", seminarList.get(position).getSemNum());
+                startActivity(intent);
+            }
+        });
 
         //Gets the list of all the seminars
         new GetAllSeminarsTask().execute();
@@ -68,15 +82,6 @@ public class SeminarActivity extends AppCompatActivity {
         //Displays the seminars
         ListView listView = (ListView) findViewById(R.id.viewAllSeminars);
         listView.setAdapter(new SeminarListAdapter(this, seminarList));
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(SeminarActivity.this, HeadCountActivity.class);
-                intent.putExtra("SEMINAR_NAME", seminarList.get(position).getSemName());
-                intent.putExtra("SEMINAR_NUMBER", seminarList.get(position).getSemNum());
-                startActivity(intent);
-            }
-        });
     }
 
     private class GetAllSeminarsTask extends AsyncTask<Void, Void, ArrayList<Seminar>> {

@@ -9,5 +9,7 @@
     <string name="login_username_hint">Username</string>
     <string name="login_password_hint">Password</string>
     <string name="headcount_hint">Head count</string>
+    <string name="head_count_text">Head Count</string>
+    <string name="submit_headcount_text">SUBMIT</string>
 
 </resources>
