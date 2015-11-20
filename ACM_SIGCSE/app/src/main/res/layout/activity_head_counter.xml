@@ -46,13 +46,17 @@
         android:layout_centerHorizontal="true"
         />
 
-    <!--android:layout_alignParentBottom="true"-->
-    <!--android:layout_marginBottom="133dp"-->
+    <TextView
+        android:id="@+id/prev_headcount_label"
+        android:text="@string/prev_headcount_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/submit"/>
 
     <ListView
         android:id="@+id/previous_headcounts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/submit"/>
+        android:layout_below="@id/prev_headcount_label"/>
 
 </RelativeLayout>
