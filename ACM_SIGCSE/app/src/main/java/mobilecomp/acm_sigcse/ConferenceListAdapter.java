@@ -25,12 +25,12 @@ public class ConferenceListAdapter extends ArrayAdapter<ConferenceActivity> {
 
         if (convertView == null)
         {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.seminar_list_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_list_item, parent, false);
         }
 
-        TextView tvName = (TextView) convertView.findViewById(R.id.seminarName);
+        TextView tvName = (TextView) convertView.findViewById(R.id.activityName);
         tvName.setText(activity.getName());
-        TextView tvNumber = (TextView) convertView.findViewById(R.id.seminarNumber);
+        TextView tvNumber = (TextView) convertView.findViewById(R.id.activityNumber);
         tvNumber.setText(activity.getNumber());
 
         return convertView;

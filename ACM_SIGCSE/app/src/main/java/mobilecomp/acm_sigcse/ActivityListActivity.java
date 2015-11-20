@@ -14,15 +14,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class ActivityListActivity extends AppCompatActivity {
     private ArrayList<ConferenceActivity> activityList = new ArrayList<ConferenceActivity>();
@@ -30,7 +27,7 @@ public class ActivityListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_seminar);
+        setContentView(R.layout.activity_activity_list);
 
         ListView listView = (ListView) findViewById(R.id.viewAllActivities);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -87,7 +84,7 @@ public class ActivityListActivity extends AppCompatActivity {
         @Override
         protected ArrayList<ConferenceActivity> doInBackground(Void... params) {
             try {
-                final String url = String.format("http://%s/api/seminars", getString(R.string.server_address));
+                final String url = String.format("http://%s/api/activities", getString(R.string.server_address));
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
                 ConferenceActivity[] activities = restTemplate.getForObject(url, ConferenceActivity[].class);
