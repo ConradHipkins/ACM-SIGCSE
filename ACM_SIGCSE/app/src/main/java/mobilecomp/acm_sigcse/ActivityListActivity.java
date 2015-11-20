@@ -75,7 +75,7 @@ public class ActivityListActivity extends AppCompatActivity {
         activityList.clear();
         activityList.addAll(list);
 
-        //Displays the seminars
+        //Displays the activities
         ListView listView = (ListView) findViewById(R.id.viewAllActivities);
         listView.setAdapter(new ConferenceListAdapter(this, activityList));
     }
@@ -97,12 +97,9 @@ public class ActivityListActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(ArrayList<ConferenceActivity> activities) {
             try{
-                updateActivitiesList(activities)
-            ;}
-            catch (Exception e)
-            {
-
+                updateActivitiesList(activities);
             }
+            catch (Exception e){}
         }
 
     }

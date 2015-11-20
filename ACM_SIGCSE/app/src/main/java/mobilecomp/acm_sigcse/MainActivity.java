@@ -3,9 +3,12 @@ package mobilecomp.acm_sigcse;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -39,11 +42,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick(View view){
+        EditText userName = (EditText) findViewById(R.id.username);
+        EditText password = (EditText) findViewById(R.id.password);
 
-        Intent i = new Intent();
-        i.setClass(this, ActivityListActivity.class);
-        startActivity(i);
-
+        if (validUserName(userName) && validPassword(password)) {
+            Intent i = new Intent();
+            i.setClass(this, ActivityListActivity.class);
+            startActivity(i);
+        }
     }
 
+    private boolean validUserName(EditText e)
+    {
+        if (e.getText().length() == 0 || e.getText() == null)
+        {
+            e.setError("Invalid username");
+//            Toast.makeText(getApplicationContext(),"Invalid username",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validPassword(EditText e)
+    {
+        if (e.getText().length() == 0 || e.getText() == null)
+        {
+            e.setError("Invalid password");
+//            Toast.makeText(getApplicationContext(),"Invalid password",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
 }
