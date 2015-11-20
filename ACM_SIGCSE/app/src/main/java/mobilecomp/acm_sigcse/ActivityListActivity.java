@@ -1,6 +1,6 @@
 package mobilecomp.acm_sigcse;
 /*
-Created by Liz and Natalie on 11/13/15. This class displays the list of the seminars in a list.
+Created by Liz and Natalie on 11/13/15. This class displays the list of the activities in a list.
  It works with the XML file to display the list in a linear layout format.
  */
 
@@ -24,29 +24,28 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class SeminarActivity extends AppCompatActivity {
-    private ArrayList<Seminar> seminarList = new ArrayList<Seminar>();
+public class ActivityListActivity extends AppCompatActivity {
+    private ArrayList<ConferenceActivity> activityList = new ArrayList<ConferenceActivity>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seminar);
 
-        ListView listView = (ListView) findViewById(R.id.viewAllSeminars);
+        ListView listView = (ListView) findViewById(R.id.viewAllActivities);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(SeminarActivity.this, HeadCountActivity.class);
-                intent.putExtra("SEMINAR_ID", seminarList.get(position).getId());
-                intent.putExtra("SEMINAR_HEADCOUNT", seminarList.get(position).getHeadCount());
-                intent.putExtra("SEMINAR_NAME", seminarList.get(position).getSemName());
-                intent.putExtra("SEMINAR_NUMBER", seminarList.get(position).getSemNum());
+                Intent intent = new Intent(ActivityListActivity.this, HeadCountActivity.class);
+                intent.putExtra("ACTIVITY_ID", activityList.get(position).getId());
+                intent.putExtra("ACTIVITY_NAME", activityList.get(position).getName());
+                intent.putExtra("ACTIVITY_NUMBER", activityList.get(position).getNumber());
                 startActivity(intent);
             }
         });
 
         //Gets the list of all the seminars
-        new GetAllSeminarsTask().execute();
+        new GetAllActivitiesTask().execute();
     }
 
     @Override
@@ -74,33 +73,39 @@ public class SeminarActivity extends AppCompatActivity {
     /**
         Gets the seminar arraylist and handles the connection to the database
      */
-    private void updateSeminarsList(ArrayList<Seminar> list)
+    private void updateActivitiesList(ArrayList<ConferenceActivity> list)
     {
-        seminarList.clear();
-        seminarList.addAll(list);
+        activityList.clear();
+        activityList.addAll(list);
 
         //Displays the seminars
-        ListView listView = (ListView) findViewById(R.id.viewAllSeminars);
-        listView.setAdapter(new SeminarListAdapter(this, seminarList));
+        ListView listView = (ListView) findViewById(R.id.viewAllActivities);
+        listView.setAdapter(new ConferenceListAdapter(this, activityList));
     }
 
-    private class GetAllSeminarsTask extends AsyncTask<Void, Void, ArrayList<Seminar>> {
+    private class GetAllActivitiesTask extends AsyncTask<Void, Void, ArrayList<ConferenceActivity>> {
         @Override
-        protected ArrayList<Seminar> doInBackground(Void... params) {
+        protected ArrayList<ConferenceActivity> doInBackground(Void... params) {
             try {
                 final String url = String.format("http://%s/api/seminars", getString(R.string.server_address));
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-                Seminar[] seminar = restTemplate.getForObject(url, Seminar[].class);
-                return new ArrayList<Seminar>(Arrays.asList(seminar));
+                ConferenceActivity[] activities = restTemplate.getForObject(url, ConferenceActivity[].class);
+                return new ArrayList<ConferenceActivity>(Arrays.asList(activities));
             } catch (Exception e) {
-                Log.e("SeminarActivity", e.getMessage(), e);
+                Log.e("ActivityListActivity", e.getMessage(), e);
             }
             return null;
         }
         @Override
-        protected void onPostExecute(ArrayList<Seminar> seminars) {
-            updateSeminarsList(seminars);
+        protected void onPostExecute(ArrayList<ConferenceActivity> activities) {
+            try{
+                updateActivitiesList(activities)
+            ;}
+            catch (Exception e)
+            {
+
+            }
         }
 
     }

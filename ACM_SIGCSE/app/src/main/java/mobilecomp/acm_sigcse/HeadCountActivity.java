@@ -26,7 +26,7 @@ public class HeadCountActivity extends Activity {
     private Button submit;
     private int headCount;
     private EditText numParticipant;
-    private Seminar seminar;
+    private ConferenceActivity conferenceActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -34,13 +34,12 @@ public class HeadCountActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.head_counter);
 
-        seminar = new Seminar();
+        conferenceActivity = new ConferenceActivity();
 
         Intent intent = getIntent();
-        seminar.setId(intent.getIntExtra("SEMINAR_ID", 0));
-        seminar.setSemName(intent.getStringExtra("SEMINAR_NAME"));
-        seminar.setSemNum(intent.getStringExtra("SEMINAR_NUMBER"));
-        seminar.setHeadCount(intent.getIntExtra("SEMINAR_HEADCOUNT", 0));
+        conferenceActivity.setId(intent.getIntExtra("ACTIVITY_ID", 0));
+        conferenceActivity.setName(intent.getStringExtra("ACTIVITY_NAME"));
+        conferenceActivity.setNumber(intent.getStringExtra("ACTIVITY_NUMBER"));
 
         //Text Fields (Edit) - Just using the text field for tests
         numParticipant = (EditText) findViewById(R.id.numParticipant);
@@ -82,15 +81,13 @@ public class HeadCountActivity extends Activity {
         {
             try{
                 //Build the url
-                final String url = String.format("http://%s/api/seminars/%s", getString(R.string.server_address), Integer.toString(seminar.getId()));
+                final String url = String.format("http://%s/api/seminars/%s", getString(R.string.server_address), Integer.toString(conferenceActivity.getId()));
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
                 restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
 
-                seminar.setHeadCount(headCount);
-
                 //Send the request, save the result, then return it.
-                String response = restTemplate.postForObject(url,seminar,String.class);
+                String response = restTemplate.postForObject(url,conferenceActivity,String.class);
                 return response;
 
             }

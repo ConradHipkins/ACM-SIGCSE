@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">ACM_SIGCSE</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_seminar">SeminarActivity</string>
+    <string name="title_activity_seminar">Activities</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="server_address">146.113.66.242:3002</string>
-    <string name="view_all_seminars_title">Seminars</string>
+    <string name="view_all_activities_title">Activities</string>
     <string name="login_username_hint">Username</string>
     <string name="login_password_hint">Password</string>
     <string name="headcount_hint">Head count</string>

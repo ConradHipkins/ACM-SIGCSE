@@ -22,7 +22,7 @@
             android:name=".HeadCountActivity"
             android:label="@string/app_name" />
         <activity
-            android:name=".SeminarActivity"
+            android:name=".ActivityListActivity"
             android:label="@string/title_activity_seminar" >
         </activity>
     </application>

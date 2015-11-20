@@ -12,8 +12,8 @@ import java.util.ArrayList;
 /**
  * Created by Natalie on 11/10/15.
  */
-public class SeminarListAdapter extends ArrayAdapter<Seminar> {
-    public SeminarListAdapter(Context context, ArrayList<Seminar> s)
+public class ConferenceListAdapter extends ArrayAdapter<ConferenceActivity> {
+    public ConferenceListAdapter(Context context, ArrayList<ConferenceActivity> s)
     {
         super(context, 0, s);
     }
@@ -21,7 +21,7 @@ public class SeminarListAdapter extends ArrayAdapter<Seminar> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent)
     {
-        Seminar seminar = getItem(position);
+        ConferenceActivity activity = getItem(position);
 
         if (convertView == null)
         {
@@ -29,9 +29,9 @@ public class SeminarListAdapter extends ArrayAdapter<Seminar> {
         }
 
         TextView tvName = (TextView) convertView.findViewById(R.id.seminarName);
-        tvName.setText(seminar.getSemName());
+        tvName.setText(activity.getName());
         TextView tvNumber = (TextView) convertView.findViewById(R.id.seminarNumber);
-        tvNumber.setText(seminar.getSemNum());
+        tvNumber.setText(activity.getNumber());
 
         return convertView;
     }
