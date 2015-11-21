@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.os.AsyncTask;
+import android.widget.Toast;
+
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
@@ -151,6 +153,7 @@ public class HeadCountActivity extends Activity {
         @Override
         protected void onPostExecute(String response)
         {
+            Toast.makeText(getApplicationContext(), "Headcount submitted", Toast.LENGTH_SHORT).show();
             new GetAllHeadcountsTask().execute();
         }
     }

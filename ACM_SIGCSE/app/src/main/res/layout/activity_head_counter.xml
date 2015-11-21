@@ -30,12 +30,9 @@
         android:theme="@style/Animation.AppCompat.DropDownUp"
         android:layout_centerHorizontal="true"/>
 
-    <!--android:hint="@string/headcount_hint"-->
-
-
     <Button
         android:id="@+id/submit"
-        android:text="SUBMIT"
+        android:text="Submit"
         android:textColor="#ffffff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,7 +50,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/submit"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/activity_vertical_margin"/>
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"/>
 
     <ListView
         android:id="@+id/previous_headcounts"
