@@ -4,8 +4,14 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+<<<<<<< HEAD:ACM_SIGCSE/app/src/main/res/layout/activity_activity_list.xml
     tools:context="mobilecomp.acm_sigcse.ActivityListActivity">
 
+=======
+    tools:context="mobilecomp.acm_sigcse.SeminarActivity">
+    
+    <RelativeLayout
+>>>>>>> 9e1fd3fb6bb24c40f1fefb0be4e8799aac515fcf:ACM_SIGCSE/app/src/main/res/layout/activity_seminar.xml
     <TextView
         android:id="@+id/viewAllActivitiesTitle"
         android:text="@string/view_all_activities_title"
@@ -18,6 +24,20 @@
         android:id="@+id/viewAllActivities"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD:ACM_SIGCSE/app/src/main/res/layout/activity_activity_list.xml
         android:layout_below="@id/viewAllActivitiesTitle"/>
 
+=======
+        android:layout_below="@id/viewAllSeminarsTitle"/>
+        
+    <ImageView
+        android:id="@+id/arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/arrow"
+    </RelativeLayout>
+>>>>>>> 9e1fd3fb6bb24c40f1fefb0be4e8799aac515fcf:ACM_SIGCSE/app/src/main/res/layout/activity_seminar.xml
 </RelativeLayout>

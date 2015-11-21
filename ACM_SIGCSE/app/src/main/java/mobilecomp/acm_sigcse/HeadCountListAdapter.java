@@ -22,16 +22,16 @@ public class HeadCountListAdapter extends ArrayAdapter<HeadCount> {
     public View getView(int position, View convertView, ViewGroup parent)
     {
         HeadCount headCount = getItem(position);
-
         if (convertView == null)
         {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.headcount_list_item, parent, false);
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.headcount_list_item, parent, false);
         }
 
         TextView tvName = (TextView) convertView.findViewById(R.id.prev_headcount_count);
-        tvName.setText(headCount.getHeadCount());
-        TextView tvNumber = (TextView) convertView.findViewById(R.id.prev_headcount_timestamp);
-        tvNumber.setText(headCount.getTimeStamp().toString());
+        tvName.setText(Integer.toString(headCount.getHeadCount()));
+
+        TextView tvNumber = (TextView) convertView.findViewById(R.id.prev_headcount_timeadded);
+        tvNumber.setText(headCount.getTimeAdded());
 
         return convertView;
     }

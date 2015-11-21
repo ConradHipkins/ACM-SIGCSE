@@ -6,9 +6,6 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <!--android:layout_centerVertical="true"-->
-
-
     <TextView
         android:id="@+id/rem"
         android:textSize="@dimen/abc_action_bar_progress_bar_size"
@@ -42,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/numParticipant"
         android:background="@mipmap/bbt"
-        android:onClick="onClick"
+        android:onClick="onClickSubmit"
         android:layout_centerHorizontal="true"
         />
 
@@ -51,12 +48,14 @@
         android:text="@string/prev_headcount_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/submit"/>
+        android:layout_below="@id/submit"
+        android:layout_marginTop="@dimen/activity_vertical_margin"/>
 
     <ListView
         android:id="@+id/previous_headcounts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/prev_headcount_label"/>
+        android:layout_below="@id/prev_headcount_label"
+        />
 
 </RelativeLayout>

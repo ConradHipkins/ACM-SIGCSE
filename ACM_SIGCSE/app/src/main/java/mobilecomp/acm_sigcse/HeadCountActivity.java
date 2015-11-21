@@ -1,24 +1,22 @@
 package mobilecomp.acm_sigcse;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 import android.os.AsyncTask;
-
-
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.Arrays;
+import java.util.Calendar;
 
 /**
  * Author: Luis Diniz
@@ -43,24 +41,70 @@ public class HeadCountActivity extends Activity {
         headCount = new HeadCount();
 
         Intent intent = getIntent();
-        headCount.setActivityId(intent.getIntExtra("ACTIVITY_ID", -1));
+        headCount.setActivityID(intent.getIntExtra("ACTIVITY_ID", -1));
 
         //Text Fields (Edit) - Just using the text field for tests
         numParticipant = (EditText) findViewById(R.id.numParticipant);
+
+        new GetAllHeadcountsTask().execute();
     }
 
     public void onClickSubmit(View view)
     {
         //Method able to get the headcount number from the user and call the function to submit it to the DB
-        headCountNumber = Integer.parseInt(numParticipant.getText().toString());
-        //new PostHeadCountTask().execute();
+        if (numParticipant.getText().length() > 0)
+        {
+            headCountNumber = Integer.parseInt(numParticipant.getText().toString());
+            new PostHeadCountTask().execute();
+        }
+        else
+        {
+            numParticipant.setError("Please enter a headcount");
+        }
     }
 
-    private void populatePreviousHeadcounts()
+    private void populatePreviousHeadcounts(ArrayList<HeadCount> list)
     {
+        prevHeadCountList.clear();
+        prevHeadCountList.addAll(list);
+
         ListView listView = (ListView) findViewById(R.id.previous_headcounts);
         listView.setAdapter(new HeadCountListAdapter(getApplicationContext(), prevHeadCountList));
     }
+
+    private class GetAllHeadcountsTask extends AsyncTask<Void, Void, ArrayList<HeadCount>>
+    {
+        @Override
+        protected ArrayList<HeadCount> doInBackground(Void... params)
+        {
+            try {
+                final String url = String.format("http://%s/api/headcounts/%s", getString(R.string.server_address), headCount.getActivityID());
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+                HeadCount[] headCounts = restTemplate.getForObject(url, HeadCount[].class);
+                return new ArrayList<HeadCount>(Arrays.asList(headCounts));
+            }
+            catch (Exception e)
+            {
+                Log.e("HeadCountActivity", e.getMessage(), e);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<HeadCount> headCounts)
+        {
+            try
+            {
+                populatePreviousHeadcounts(headCounts);
+            }
+            catch (Exception e) {
+                Log.e("HeadCountActivity", e.getMessage(), e);
+            }
+        }
+    }
+
+    //TODO Show when successful, take back to thing? idk?
 
     //This is the private Async class used for the HttpTask
     private class PostHeadCountTask extends AsyncTask<Void, Void, String>
@@ -68,8 +112,11 @@ public class HeadCountActivity extends Activity {
         @Override
         protected void onPreExecute()
         {
-            headCount.setHeadCount(345);
-            headCount.setTimeStamp(new Date());
+            Calendar c = Calendar.getInstance();
+            Timestamp ts = new Timestamp(c.getTime().getTime());
+
+            //Set headcount number
+            headCount.setHeadCount(headCountNumber);
         }
 
         /**
@@ -85,7 +132,7 @@ public class HeadCountActivity extends Activity {
         {
             try{
                 //Build the url
-                final String url = String.format("http://%s/api/headcounts/%s", getString(R.string.server_address), Integer.toString(headCount.getId()));
+                final String url = String.format("http://%s/api/activities/%d", getString(R.string.server_address),headCount.getActivityID());
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
                 restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
@@ -94,13 +141,17 @@ public class HeadCountActivity extends Activity {
                 String response = restTemplate.postForObject(url,headCount,String.class);
                 return response;
             }
-            catch (Exception E)
+            catch (Exception e)
             {
+                Log.e("HeadCountActivity",e.getMessage(),e);
             }
             return null;
         }
 
-
+        @Override
+        protected void onPostExecute(String response)
+        {
+            new GetAllHeadcountsTask().execute();
+        }
     }
-
 }

@@ -1,47 +1,48 @@
 package mobilecomp.acm_sigcse;
 
+import java.sql.Timestamp;
 import java.util.Date; // this might be problem
 
 /**
  * Created by Natalie on 11/19/15.
  */
 public class HeadCount {
-    private int id;
-    private int activityId;
+    private int headCountID;
+    private int activityID;
     private int headCount;
-    private Date timeStamp;
+    private String timeAdded;
 
-    public int getId()
+    public int getHeadCountID()
     {
-       return id;
+       return headCountID;
     }
-    public int getActivityId()
+    public int getActivityID()
     {
-        return activityId;
+        return activityID;
     }
     public int getHeadCount()
     {
         return headCount;
     }
-    public Date getTimeStamp()
+    public String getTimeAdded()
     {
-        return timeStamp;
+        return timeAdded;
     }
 
-    public void setId(int i)
+    public void setHeadCountID(int i)
     {
-        id = i;
+        headCountID = i;
     }
-    public void setActivityId(int i)
+    public void setActivityID(int i)
     {
-        activityId = i;
+        activityID = i;
     }
     public void setHeadCount(int i)
     {
         headCount = i;
     }
-    public void setTimeStamp(Date d)
+    public void setTimeAdded(String d)
     {
-        timeStamp = d;
+        timeAdded = d;
     }
 }

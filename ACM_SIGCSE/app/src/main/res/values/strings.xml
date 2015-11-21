@@ -11,6 +11,6 @@
     <string name="headcount_hint">Head count</string>
     <string name="head_count_text">Head Count</string>
     <string name="submit_headcount_text">SUBMIT</string>
-    <string name="prev_headcount_label">Previes Entries</string>
+    <string name="prev_headcount_label">Previous Entries</string>
 
 </resources>

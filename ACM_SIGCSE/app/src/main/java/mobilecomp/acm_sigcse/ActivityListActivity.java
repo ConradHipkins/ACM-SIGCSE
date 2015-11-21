@@ -35,8 +35,6 @@ public class ActivityListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ActivityListActivity.this, HeadCountActivity.class);
                 intent.putExtra("ACTIVITY_ID", activityList.get(position).getId());
-                intent.putExtra("ACTIVITY_NAME", activityList.get(position).getName());
-                intent.putExtra("ACTIVITY_NUMBER", activityList.get(position).getNumber());
                 startActivity(intent);
             }
         });

@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         if (validUserName(userName) && validPassword(password)) {
             Intent i = new Intent();
             i.setClass(this, ActivityListActivity.class);
+            //TODO Actually validate login
             startActivity(i);
         }
     }
@@ -56,8 +57,7 @@ public class MainActivity extends AppCompatActivity {
     {
         if (e.getText().length() == 0 || e.getText() == null)
         {
-            e.setError("Invalid username");
-//            Toast.makeText(getApplicationContext(),"Invalid username",Toast.LENGTH_SHORT).show();
+            e.setError("Username required");
             return false;
         }
         return true;
@@ -67,8 +67,7 @@ public class MainActivity extends AppCompatActivity {
     {
         if (e.getText().length() == 0 || e.getText() == null)
         {
-            e.setError("Invalid password");
-//            Toast.makeText(getApplicationContext(),"Invalid password",Toast.LENGTH_SHORT).show();
+            e.setError("Password required");
             return false;
         }
         return true;
