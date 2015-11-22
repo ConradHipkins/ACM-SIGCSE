@@ -10,7 +10,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by Natalie on 11/10/15.
+ * Custom adapter class for the ListView of previously entered headcounts. Displays the time and value
+ * list items.
+ * @author Natalie Davenport
+ * @version 11/21/2015
  */
 public class HeadCountListAdapter extends ArrayAdapter<HeadCount> {
     public HeadCountListAdapter(Context context, ArrayList<HeadCount> s)
@@ -27,6 +30,7 @@ public class HeadCountListAdapter extends ArrayAdapter<HeadCount> {
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.headcount_list_item, parent, false);
         }
 
+        //Set the textviews to headcount's values
         TextView tvName = (TextView) convertView.findViewById(R.id.prev_headcount_count);
         tvName.setText(Integer.toString(headCount.getHeadCount()));
 

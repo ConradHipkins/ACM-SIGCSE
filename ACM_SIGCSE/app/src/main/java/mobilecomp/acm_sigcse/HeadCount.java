@@ -1,10 +1,9 @@
 package mobilecomp.acm_sigcse;
 
-import java.sql.Timestamp;
-import java.util.Date; // this might be problem
-
 /**
- * Created by Natalie on 11/19/15.
+ * Model class for the HeadCount data object
+ * @version 11/21/15
+ * @author Natalie Davenport
  */
 public class HeadCount {
     private int headCountID;

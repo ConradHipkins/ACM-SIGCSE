@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:padding="@dimen/activity_list_padding">
 
     <TextView
         android:id="@+id/prev_headcount_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:text="headcount"
+        android:layout_weight="1"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/prev_headcount_timeadded"
-        android:layout_width="wrap_content"
+        android:text="time added"
+        android:layout_weight="2"
+        android:layout_width="0dip"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_toRightOf="@id/prev_headcount_count"/>
+        android:gravity="center"
+        />
 
-</RelativeLayout>
+</LinearLayout>
