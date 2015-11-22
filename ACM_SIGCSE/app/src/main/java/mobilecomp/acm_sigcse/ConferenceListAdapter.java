@@ -10,7 +10,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by Natalie on 11/10/15.
+ * Custom adapter for the ConferenceActivity listview in the ActivityListActivity class. Displays
+ * conference number and title
+ * @author Natalie Davenport
+ * @version 11/21/15
  */
 public class ConferenceListAdapter extends ArrayAdapter<ConferenceActivity> {
     public ConferenceListAdapter(Context context, ArrayList<ConferenceActivity> s)
@@ -28,6 +31,7 @@ public class ConferenceListAdapter extends ArrayAdapter<ConferenceActivity> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_list_item, parent, false);
         }
 
+        //Sets the values of the textviews
         TextView tvName = (TextView) convertView.findViewById(R.id.activityName);
         tvName.setText(activity.getName());
         TextView tvNumber = (TextView) convertView.findViewById(R.id.activityNumber);

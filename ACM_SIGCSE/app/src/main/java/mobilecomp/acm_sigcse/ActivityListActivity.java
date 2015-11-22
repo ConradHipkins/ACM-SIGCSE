@@ -1,7 +1,9 @@
 package mobilecomp.acm_sigcse;
-/*
-Created by Liz and Natalie on 11/13/15. This class displays the list of the activities in a list.
- It works with the XML file to display the list in a linear layout format.
+/***
+ * Created by Liz and Natalie on 11/13/15. This class displays the list of the activities in a list.
+ *  It works with the XML file to display the list in a linear layout format.
+ *  @Author Liz, Natalie
+ *  @Date 11/13/15
  */
 
 import android.content.Intent;
@@ -29,10 +31,12 @@ public class ActivityListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity_list);
 
+        //Get listview and set onItemLickListener
         ListView listView = (ListView) findViewById(R.id.viewAllActivities);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //Intent to headcount activity
                 Intent intent = new Intent(ActivityListActivity.this, HeadCountActivity.class);
                 intent.putExtra("ACTIVITY_ID", activityList.get(position).getId());
                 startActivity(intent);
@@ -78,6 +82,9 @@ public class ActivityListActivity extends AppCompatActivity {
         listView.setAdapter(new ConferenceListAdapter(this, activityList));
     }
 
+    /**
+     * Gets all activities from the DB
+     */
     private class GetAllActivitiesTask extends AsyncTask<Void, Void, ArrayList<ConferenceActivity>> {
         @Override
         protected ArrayList<ConferenceActivity> doInBackground(Void... params) {
@@ -85,6 +92,8 @@ public class ActivityListActivity extends AppCompatActivity {
                 final String url = String.format("http://%s/api/activities", getString(R.string.server_address));
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+
+                //Retreives list of activities from the database as an array
                 ConferenceActivity[] activities = restTemplate.getForObject(url, ConferenceActivity[].class);
                 return new ArrayList<ConferenceActivity>(Arrays.asList(activities));
             } catch (Exception e) {
@@ -95,6 +104,7 @@ public class ActivityListActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(ArrayList<ConferenceActivity> activities) {
             try{
+                //Attempt to populate the ArrayList 
                 updateActivitiesList(activities);
             }
             catch (Exception e){}
