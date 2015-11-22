@@ -10,7 +10,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
+/***
+ * The entrance point for the app, providing a mock login function. Cbecks the username and
+ * password before allowing the user access to the acitivies list
+ *
+ * @author Liz, Luis, Natalie
+ * @version 11/22/15
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -45,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         EditText userName = (EditText) findViewById(R.id.username);
         EditText password = (EditText) findViewById(R.id.password);
 
+        //If username and password are valid, send to activities page
         if (validUserName(userName) && validPassword(password)) {
             Intent i = new Intent();
             i.setClass(this, ActivityListActivity.class);
@@ -53,6 +60,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Check length of username and show error if is null or empty
+     * @param e
+     * @return
+     */
     private boolean validUserName(EditText e)
     {
         if (e.getText().length() == 0 || e.getText() == null)
@@ -63,6 +75,11 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Check length of password and show error if null or empty
+     * @param e
+     * @return
+     */
     private boolean validPassword(EditText e)
     {
         if (e.getText().length() == 0 || e.getText() == null)
