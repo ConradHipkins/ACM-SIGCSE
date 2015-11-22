@@ -51,7 +51,7 @@
         android:layout_below="@id/submit"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"/>
+        android:layout_marginBottom="@dimen/activity_list_padding"/>
 
     <ListView
         android:id="@+id/previous_headcounts"

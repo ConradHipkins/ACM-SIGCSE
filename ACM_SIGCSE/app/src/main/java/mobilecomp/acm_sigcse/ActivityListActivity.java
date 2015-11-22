@@ -104,7 +104,7 @@ public class ActivityListActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(ArrayList<ConferenceActivity> activities) {
             try{
-                //Attempt to populate the ArrayList 
+                //Attempt to populate the ArrayList
                 updateActivitiesList(activities);
             }
             catch (Exception e){}
