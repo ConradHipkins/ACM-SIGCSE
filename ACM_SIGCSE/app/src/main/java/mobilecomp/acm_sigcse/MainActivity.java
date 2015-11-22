@@ -13,9 +13,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         EditText userName = (EditText) findViewById(R.id.username);
         EditText password = (EditText) findViewById(R.id.password);
 
+
            if (validUserName(userName) && validPassword(password)) {
 
                //set accout model data.
@@ -85,8 +88,14 @@ public class MainActivity extends AppCompatActivity {
            t.setText(res);
            t.setVisibility(View.VISIBLE);
        }
+
     }
 
+    /**
+     * Check length of username and show error if is null or empty
+     * @param e
+     * @return
+     */
     private boolean validUserName(EditText e)
     {
         if (e.getText().length() == 0 || e.getText() == null)
@@ -97,6 +106,11 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Check length of password and show error if null or empty
+     * @param e
+     * @return
+     */
     private boolean validPassword(EditText e)
     {
         if (e.getText().length() == 0 || e.getText() == null)
